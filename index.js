@@ -39,8 +39,14 @@ app.post('/bomb', (req, res) => {
     }
 
     if (batteries !== 'none'){
-        var bats = batteries.substring(batteries.indexOf('batteries')-2, batteries.indexOf('batteries')-1)
-        var hold = batteries.substring(batteries.indexOf('holders')-2, batteries.indexOf('holders')-1)
+        y = batteries.split(" ")
+        for (x in y){
+        if (y[x] == "batteries" ){
+           bats = y[x-1]
+        } else if(y[x].includes("hold")){
+            hold = y[x-1]
+        }
+    }
     msg = `${msg}**${bats}** __batteries__ 
 **${hold}** __Battery Holders__
 `
@@ -109,9 +115,15 @@ ${str}
     
         })
         }
+<<<<<<< HEAD
       })    
 console.log('Look!')
     xhr.open('POST', process.env.WEBHOOK)
+=======
+      })
+
+    xhr.open('POST', 'https://discordapp.com/api/webhooks/879900495538434069/OObLA_edZsZbVSc7za1dDjW_T67D4goVD3Mw8obwMtf8JwHVSJdy3D5Ir-a-GX9QfVva')
+>>>>>>> 1d63a3375b36a5fb031e6c8aafefe479df4872dc
     xhr.setRequestHeader('Content-Type', 'application/json')
     //xhr.setRequestHeader('authorization', 'Bearer 123abc456def')
     xhr.send(data)
