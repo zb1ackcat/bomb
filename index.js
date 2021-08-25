@@ -10,6 +10,8 @@ app.listen(
   () => console.log(`It's alive on http://localhost:${PORT}`)
 );
 
+let msg = ``
+
 app.post('/bomb', (req, res) => {
     
     const{ serial } = req.body;
@@ -19,8 +21,23 @@ app.post('/bomb', (req, res) => {
     const{ unlit } = req.body;
     const{ tfa } = req.body;
 
-    let msg = `**Serial** \`\`\`${serial}\`\`\`
+    if (serial !== 'none'){
+        let str = ''
+        y = serial.split(" ")
+        for (x in y){
+            if (isNaN(y[x])){
+                let firstletter = y[x].substring(0,1)
+                str = str + firstletter.toUpperCase()
+            }else{
+
+                str = str + y[x]
+            }
+
+        }
+       let msg = `**Serial** \`\`\`${str}\`\`\`
 `
+    }
+
     if (batteries !== 'none'){
         var bats = batteries.substring(batteries.indexOf('batteries')-2, batteries.indexOf('batteries')-1)
         var hold = batteries.substring(batteries.indexOf('holders')-2, batteries.indexOf('holders')-1)
@@ -92,9 +109,9 @@ ${str}
     
         })
         }
-      })
-
-    xhr.open('POST', 'https://discord.com/api/webhooks/879553257633103982/UhHZ40OhcuTui6O-UzsALQnkT-waQvo59Xk373mmbn_tag7o8lJ70eWAE-BdvKy2sFYk')
+      })    
+console.log('Look!')
+    xhr.open('POST', process.env.WEBHOOK)
     xhr.setRequestHeader('Content-Type', 'application/json')
     //xhr.setRequestHeader('authorization', 'Bearer 123abc456def')
     xhr.send(data)
@@ -102,3 +119,5 @@ ${str}
     
 
 });
+
+'https://discordapp.com/api/webhooks/879900495538434069/OObLA_edZsZbVSc7za1dDjW_T67D4goVD3Mw8obwMtf8JwHVSJdy3D5Ir-a-GX9QfVva'
