@@ -34,7 +34,7 @@ app.post('/bomb', (req, res) => {
             }
 
         }
-       let msg = `**Serial** \`\`\`${str}\`\`\`
+        msg = `**Serial** \`\`\`${str}\`\`\`
 `
     }
 
@@ -117,7 +117,8 @@ ${str}
         }
       })    
 console.log('Look!')
-    xhr.open('POST', process.env.WEBHOOK)
+    //xhr.open('POST', process.env.WEBHOOK)
+    xhr.open('POST','https://discordapp.com/api/webhooks/879900495538434069/OObLA_edZsZbVSc7za1dDjW_T67D4goVD3Mw8obwMtf8JwHVSJdy3D5Ir-a-GX9QfVva')
     xhr.setRequestHeader('Content-Type', 'application/json')
     //xhr.setRequestHeader('authorization', 'Bearer 123abc456def')
     xhr.send(data)
@@ -125,5 +126,3 @@ console.log('Look!')
     
 
 });
-
-'https://discordapp.com/api/webhooks/879900495538434069/OObLA_edZsZbVSc7za1dDjW_T67D4goVD3Mw8obwMtf8JwHVSJdy3D5Ir-a-GX9QfVva'
